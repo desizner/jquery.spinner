@@ -53,10 +53,10 @@
       },
       increment     = function (decrement) {
         if(decrement === true) {
-          if(min !== null && $this.data('val') <= min) { return false; }
+          if(min !== null && !loop && $this.data('val') <= min) { return false; }
           $decrement.addClass('active');
         } else {
-          if(max !== null && $this.data('val') >= max) { return false; }
+          if(max !== null && !loop && $this.data('val') >= max) { return false; }
           $increment.addClass('active');
         }
         setTimeout(function () {
@@ -127,6 +127,7 @@
         $this.attr('list', null);
         min = 0;
         max = dataList.length - 1;
+        loop = options.loop;
       } 
       
       $this.data('val', 0);
